@@ -1,20 +1,14 @@
 $packages = @(
-'7zip.install',
 'docker-desktop',
-'firefox',
-'github-desktop',
+'git',
 'GoogleChrome',
-'intellijidea-ultimate',
 'keyhac',
 'keypirinha',
-'Kindle',
 'line',
 'microsoft-windows-terminal',
-'postman',
 'powertoys',
-'registrychangesview',
-'rufus',
 'slack',
+'vscode',
 'winmerge-jp'
 )
 
@@ -38,21 +32,6 @@ function Install-WSL2-Kernel-Update() {
   wsl --set-default-version 2
 }
 
-function Install-AtokPassport() {
-  Write-Host '-> AtokPassport'
-  $client = New-Object net.webclient
-  $client.DownloadFile('https://sevenzip.osdn.jp/howto/9.20/7z.exe', "$env:temp\7z.exe")
-  $client.DownloadFile('https://sevenzip.osdn.jp/howto/9.20/7z.dll', "$env:temp\7z.dll")
-  $client.DownloadFile('https://gate.justsystems.com/download/atok/ut/win/at31try4.exe', "$env:temp\at31try4.exe")
-  Invoke-Expression "$env:temp\7z x $env:temp\at31try4.exe -o$env:temp"
-  Invoke-Expression "$env:temp\at31try4\ATOK\SETUP.EXE /s"
-  Remove-Item $env:temp\7z.exe
-  Remove-Item $env:temp\7z.dll
-  Remove-Item $env:temp\at31try4.exe
-  # TODO: ウェイトを入れてtry-catchを咬ませつつ消す
-  # Remove-Item $env:temp\at31try4 -Force -Recurse
-}
-
 function Install-MagicUtilities() {
   Write-Host '-> Magic Utilities'
   $client = New-Object net.webclient
@@ -60,14 +39,6 @@ function Install-MagicUtilities() {
   # TODO: サイレントインストールにする（コンポーネントの指定が必要）
   Invoke-Expression "$env:temp\MagicUtilities-Setup-3.0.9.6-Win10.exe"
   # Remove-Item $env:temp\MagicUtilities-Setup-3.0.9.6-Win10.exe
-}
-
-function Install-TablePlus() {
-  Write-Host '-> TablePlus'
-  $client = New-Object net.webclient
-  $client.DownloadFile('https://tableplus.com/release/windows/tableplus_latest', "$env:temp\TablePlusSetup.exe")
-  Invoke-Expression "$env:temp\TablePlusSetup.exe /SILENT"
-  # Remove-Item $env:temp\TablePlusSetup.exe
 }
 
 function Install-Ubuntu() {
@@ -82,8 +53,6 @@ $packages | % {
   Write-Host "-> $_"
   Install-Package-Retryable $_
 }
-Install-AtokPassport
-Install-MagicUtilities
-Install-TablePlus
+# Install-MagicUtilities
 Install-Ubuntu
 Write-Host ''

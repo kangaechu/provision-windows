@@ -3,21 +3,14 @@
     name: root
     shell: /usr/bin/zsh
 
-- name: Add hosts
-  blockinfile:
-    path: /etc/hosts
-    block: |
-      127.0.0.1 local-up.gifmagazine.net
-      127.0.0.1 local-converter.gifmagazine.net
-
 - name: Create sources directory
   file:
-    path: ~/src
+    path: ~/pkg
     state: directory
 
 - name: Clone dotfiles
   git:
-    repo: https://github.com/aikawame/dotfiles.git
+    repo: https://github.com/kangaechu/dotfiles.git
     dest: ~/src/dotfiles
 
 - name: Install dotfiles

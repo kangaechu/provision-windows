@@ -64,18 +64,18 @@
 - name: Create nodenv default packages
   shell: "bash -lc 'echo yarn >> $NODENV_ROOT/default-packages'"
 
-- name: Check if nodenv versions exists
-  stat:
-    path: "~/.anyenv/envs/nodenv/versions/{{ item }}"
-  register: "nodenv_version_dirs"
-  loop: "{{ nodenv_versions }}"
+# - name: Check if nodenv versions exists
+#   stat:
+#     path: "~/.anyenv/envs/nodenv/versions/{{ item }}"
+#   register: "nodenv_version_dirs"
+#   loop: "{{ nodenv_versions }}"
 
-- name: Add nodenv versions
-  shell: "bash -lc '~/.anyenv/envs/nodenv/bin/nodenv install {{ item }}'"
-  when: "nodenv_version_dirs.results[loop_index].stat.exists == false"
-  loop: "{{ nodenv_versions }}"
-  loop_control:
-    index_var: loop_index
+# - name: Add nodenv versions
+#   shell: "bash -lc '~/.anyenv/envs/nodenv/bin/nodenv install {{ item }}'"
+#   when: "nodenv_version_dirs.results[loop_index].stat.exists == false"
+#   loop: "{{ nodenv_versions }}"
+#   loop_control:
+#     index_var: loop_index
 
 - name: Remove bash profile
   file:

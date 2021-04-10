@@ -81,7 +81,7 @@ $regkeys | % {
     [System.Security.AccessControl.RegistryRights]::TakeOwnership
   )
   $acl = $key.GetAccessControl()
-  $idRef = [System.Security.Principal.NTAccount]('mapc01\aikawame')
+  $idRef = [System.Security.Principal.NTAccount]('mapc01\kangaechu')
   $regRights = [System.Security.AccessControl.RegistryRights]::FullControl
   $acType = [System.Security.AccessControl.AccessControlType]::Allow
   try {

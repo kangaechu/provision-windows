@@ -4,7 +4,7 @@ $ErrorActionPreference = 'Stop'
 
 Set-Location -Path $env:temp
 $client = New-Object net.webclient
-$client.DownloadFile('https://github.com/aikawame/provision-windows/archive/master.zip', "$env:temp\provision-windows-master.zip")
+$client.DownloadFile('https://github.com/kangaechu/provision-windows/archive/master.zip', "$env:temp\provision-windows-master.zip")
 Expand-Archive -Path .\provision-windows-master.zip -DestinationPath .\ -Force
 Set-Location -Path .\provision-windows-master
 Write-Host ''
@@ -25,10 +25,8 @@ wsl DEBIAN_FRONTEND=noninteractive apt-get install -y language-pack-ja ansible
 wsl update-locale LANG=ja_JP.UTF8
 wsl DEBIAN_FRONTEND=noninteractive dpkg-reconfigure tzdata
 Write-Host ''
-wsl ansible-playbook -i local local.yml --ask-vault-pass
+#wsl ansible-playbook -i local local.yml --ask-vault-pass
 Write-Host ''
-Write-Host 'Increase max_map_count for Elasticsearch container:'
-wsl -d docker-desktop echo 262144 ^> /proc/sys/vm/max_map_count
 Write-Host ''
 .\scripts\others.ps1
 Write-Host ''

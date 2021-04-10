@@ -11,7 +11,7 @@ $packages = @(
 'Microsoft.MicrosoftStickyNotes',
 'Microsoft.MixedReality.Portal',
 'Microsoft.MSPaint',
-'Microsoft.Office.OneNote',
+#Microsoft.Office.OneNote',
 'Microsoft.OneConnect',
 'Microsoft.People',
 'Microsoft.Print3D',
@@ -22,7 +22,7 @@ $packages = @(
 'Microsoft.XboxGameOverlay',
 'Microsoft.XboxGamingOverlay',
 'Microsoft.XboxSpeechToTextOverlay',
-# 'Microsoft.Windows.Photos',
+'Microsoft.Windows.Photos',
 'Microsoft.WindowsAlarms',
 # 'Microsoft.WindowsCalculator',
 'Microsoft.WindowsCamera',
@@ -30,7 +30,7 @@ $packages = @(
 'Microsoft.WindowsFeedbackHub',
 'Microsoft.WindowsMaps',
 'Microsoft.WindowsSoundRecorder',
-'Microsoft.YourPhone',
+#'Microsoft.YourPhone',
 'Microsoft.ZuneMusic',
 'Microsoft.ZuneVideo'
 )
