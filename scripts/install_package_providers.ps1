@@ -1,6 +1,5 @@
 $providers = @(
 'NuGet',
-'PowerShellGet',
 'ChocolateyGet',
 'Chocolatey'
 )
