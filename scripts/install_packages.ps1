@@ -41,8 +41,10 @@ Write-Host 'Installing packages:'
 Install-WSL2-Kernel-Update
 $packages | % {
   Write-Host "-> $_"
-  Install-Package7 $_
+  Install-Package $_
 }
-# Install-MagicUtilities
 Install-Ubuntu
 Write-Host ''
+
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
