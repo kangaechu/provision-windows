@@ -2,8 +2,6 @@ $packages = @(
 'docker-desktop',
 'git',
 'GoogleChrome',
-'keyhac',
-'keypirinha',
 'line',
 'microsoft-windows-terminal',
 'powertoys',
@@ -12,16 +10,8 @@ $packages = @(
 'winmerge-jp'
 )
 
-function Install-Package-Retryable($package, $errorCount = 0) {
-  try {
-    Install-Package $package -Force -ProviderName 'ChocolateyGet'
-  } catch {
-    if ($errorCount -lt 2) {
-      Install-Package-Retryable $package ($errorCount + 1)
-    } else {
-      Write-Error $_.Exception
-    }
-  }
+function Install-Package($package) {
+  choco install $package
 }
 
 function Install-WSL2-Kernel-Update() {
@@ -51,7 +41,7 @@ Write-Host 'Installing packages:'
 Install-WSL2-Kernel-Update
 $packages | % {
   Write-Host "-> $_"
-  Install-Package-Retryable $_
+  Install-Package7 $_
 }
 # Install-MagicUtilities
 Install-Ubuntu
