@@ -11,7 +11,7 @@ $packages = @(
 )
 
 function Install-Package($package) {
-  choco -y install $package
+  choco install -y $package
 }
 
 function Install-WSL2-Kernel-Update() {
