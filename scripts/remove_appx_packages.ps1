@@ -1,7 +1,10 @@
 $packages = @(
 'Microsoft.549981C3F5F10',
 'Microsoft.BingWeather',
-'Microsoft.DesktopAppInstaller',
+# このアプリは Windows の一部であるため、ユーザー単位でアンインストールすることはできません。
+# 管理者は、[Windows の機能の有効化または無効化] を使用して、コンピューターからのアプリの削除を試みることができます。
+# ただし、アプリをアンインストールできない場合もあります。
+# 'Microsoft.DesktopAppInstaller',
 'Microsoft.GetHelp',
 'Microsoft.Getstarted',
 'Microsoft.Messaging',
